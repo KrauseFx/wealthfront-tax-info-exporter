@@ -1,6 +1,8 @@
 # wealthfront-tax-info-exporter
 
-Export all transactions (including dividends) details into a CSV file
+Export all dividends transactions into a CSV file
+
+Wealthfront provides the basic tax documents, however they are geared towards only the US tax system. The exports don't allow you to export all dividends, but only the transactions. With this project, you can easily generate CSV files for all dividends you have received.
 
 ## Instructions
 
@@ -15,11 +17,11 @@ Export all transactions (including dividends) details into a CSV file
 
 ## Resulting CSV files
 
-<img src="/assets/csv-screenshot-1" width="400" />
-<img src="/assets/csv-screenshot-2" width="400" />
+<img src="/screenshots/csv-screenshot-1.png" />
+<img src="/screenshots/csv-screenshot-2.png" />
 
 ## Wealthfront UI the data is fetched from
 
-<img src="/assets/wf-screenshot-1" width="400" />
-<img src="/assets/wf-screenshot-2" width="400" />
-<img src="/assets/wf-screenshot-3" width="400" />
+<img src="/screenshots/wf-screenshot-1.png" width="550" />
+<img src="/screenshots/wf-screenshot-2.png" width="550" />
+<img src="/screenshots/wf-screenshot-3.png" width="550" />
