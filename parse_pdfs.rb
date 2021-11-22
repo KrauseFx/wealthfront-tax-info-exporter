@@ -4,7 +4,6 @@ require "csv"
 require "pry"
 require "yomu"
 
-
 trades = []
 holdings = []
 pending_trades = []
@@ -15,6 +14,7 @@ Dir[File.join("pdfs", "*.pdf")].each do |pdf_path|
 
   current_section = nil
   current_holdings = []
+  puts "Parsing #{pdf_path}... (currently #{trades.count} trades and #{holdings.count} holdings)"
   lines.each_with_index do |line, index|
     if current_section == :holdings
       line_columns = line.split(" ")
@@ -43,8 +43,8 @@ Dir[File.join("pdfs", "*.pdf")].each do |pdf_path|
     elsif current_section == :trades
       lines_columns = line.split(" ")
       if to_skip_next_one
-        next
         to_skip_next_one = false
+        next
       end
 
       if lines_columns[-1].start_with?("$")
@@ -71,7 +71,9 @@ Dir[File.join("pdfs", "*.pdf")].each do |pdf_path|
         end
       elsif lines_columns[0] == "PENDING" && lines_columns[1] == "TRADES"
         current_section == :pending_trades
-      elsif lines_columns[0] == "DIVIDENDS"
+      # elsif lines_columns[0] == "DIVIDENDS" # because the PDF format has changed in 2020
+      #   current_section = nil
+      elsif line.include?("Date Type Security Symbol Shares Dividend")
         current_section = nil
       end
     else
